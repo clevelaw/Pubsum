@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<script>
+//helper function for copying from table to clipboard
+function copyRow(event) {
+  //get data from selected cells
+  const row = event.target.closest('tr');
+  const doi = row.cells[4].textContent;
+  const rowData = `${doi}`;
+  
+  // Copy the data to the clipboard
+  navigator.clipboard.writeText(rowData)
+    .then(() => {
+      alert('DOI copied to clipboard');
+    })
+    .catch(err => {
+      alert(`Failed to copy doi: ${err}`);
+    });
+}
+</script>
+
+<hr style="border: 1px solid black;">
+<p> Results for keyword: {{{keyres}}}</p>
+
+<!--table showing the results of the search-->
+<table>
+  <thead>
+    <tr>
+      <th>Journal</th>
+      <th>Article Title</th>
+      <th>Last Author</th>
+      <th>Publication Date</th>
+      <th>DOI (Click to copy)</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    {{#each jjson}}
+    <tr>
+      {{#if (eq journal "JAMA")}}
+        <td><img src="/images/JAMA.png" alt="JAMA"></td>
+      {{else if (eq journal "Nature")}}
+        <td><img src="/images/Nature.png" alt="Nature"></td>
+      {{else if (eq journal "PloS one")}}
+        <td><img src="/images/plos.png" alt="PLOS one"></td>
+      {{else if (eq journal "Cell")}}
+        <td><img src="/images/cell.png" alt="Cell"></td>
+      {{else if (eq journal "Neuron")}}
+        <td><img src="/images/Neuron.png" alt="Neuron"></td>
+      {{else}}
+        <td>{{journal}}</td>
+      {{/if}}
+      <td>{{title}}</td>
+      <td>{{author.LastName}}</td>
+      <td>{{pub_date.Day}} {{pub_date.Month}} {{pub_date.Year}}</td>
+      <td><button onclick="copyRow(event)">{{doi}}</button></td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>

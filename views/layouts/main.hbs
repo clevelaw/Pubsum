@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+<script type="module" src="https://unpkg.com/dark-mode-toggle"></script>
+
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/css/index.css" media = "screen">
+    <dark-mode-toggle appearance="toggle" light="Light" dark="Dark"></dark-mode-toggle>
+    <link rel="stylesheet" href="/css/dark.css" media = "(prefers-color-scheme: dark)">
+</head>
+
+<body>
+
+
+    <div class="top-part">
+        <h1>Pubsum</h1><br><br><br>
+        <h4>Find the most recent publications from select Journals based on keywords</h4>
+        <h4>Articles are selected from <a href="https://pubmed.ncbi.nlm.nih.gov/">Pubmed</a></h4>
+        <nav>
+            <div class="nav-bar">
+                <a href="/">Start new Search</a>
+            </div>
+        </nav>
+    </div>
+<hr style="border: 1px solid black;">
+
+<p>Enter a keyword to search for the most recent article(s) covering that 
+    topic from the following journals: 
+    <a href="https://jamanetwork.com/">JAMA</a>,
+    <a href="https://www.nature.com/">Nature</a>,
+    <a href="https://journals.plos.org/plosone/">PLOS One</a>,
+    <a href="https://www.cell.com/">Cell</a>, and
+    <a href="https://www.cell.com/neuron/home">Neuron</a>
+    </p>
+
+<form action="/" method="POST"> 
+
+    <input type="text"  name="keyword" placeholder="Enter search keyword..."><br>
+
+    <input type="radio" id="1-art" name="search_range" value="1">
+    <label for="1-month">1 Article</label><br>
+    <input type="radio" id="2-art" name="search_range" value="2">
+    <label for="2-months">2 Articles</label><br>
+    <input type="radio" id="3-art" name="search_range" value="5">
+    <label for="3-month">5 Articles</label><br>
+    <input type="radio" id="6-art" name="search_range" value="10">
+    <label for="6-months">10 Article</label><br>
+
+    <button type="submit">Search</button>
+
+</form>
+</body>
+
+{{{ body }}}
+<br>
+<hr style="border: 1px solid black;">
+
+
+
+<footer>
+    <p>&copy William Cleveland 2023</p>
+</footer>
+
+</html>
